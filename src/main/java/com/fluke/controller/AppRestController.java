@@ -69,7 +69,14 @@ public class AppRestController {
 		List<Film> body = customRepos.findFilmByRating(rating, page, size, orderColumn, direction);
 		
 		ResponseEntity<List<Film>> result = new ResponseEntity<List<Film>>(body, HttpStatus.OK);
-		
+		return result;
+	}
+	
+	@GetMapping("/searchFilm")
+	public ResponseEntity<List<Film>> SearchFilm(@RequestParam String title,@RequestParam(required=false) String description,@RequestParam(required=false) String releaseYear,@RequestParam(required=false) String length,@RequestParam(required=false) String rating){
+
+		List<Film> resultTitle = filmSpecs.searchFilm(title, description, releaseYear, length, rating);
+		ResponseEntity<List<Film>> result = new ResponseEntity<List<Film>>(resultTitle,HttpStatus.OK);
 		return result;
 	}
 }

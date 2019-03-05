@@ -62,7 +62,28 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 //                redirectTo: 'user.signout'
 //              }
 //            }
-    })
+    }).state('app.search',{
+        url: '/search',
+        templateUrl: './angularjs/views/app/search.html',
+        controller: 'pageSearch',
+        resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+              return $ocLazyLoad.load([{
+                  files: [
+                            './angularjs/scripts/controllers/pageSearch.js',
+                            './angularjs/scripts/services/services.js'
+                          ]
+                }]);
+            }]
+          }
+//  ,
+//        data: {
+//            permissions: {
+//              only: ['DEPO_SC101'],
+//              redirectTo: 'user.signout'
+//            }
+//          }
+  })
       
      ;
   }

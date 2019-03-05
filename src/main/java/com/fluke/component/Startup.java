@@ -22,12 +22,8 @@ public class Startup {
 	
 	@PostConstruct
 	public void init() {
-		
 		films = filmRepos.findAll();
-		
 	}
-	
-
 	public List<Film> getFilms() {
 		return films;
 	}
